@@ -1,26 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+
 import './App.css';
+import { QrScanner } from './QrScanner';
+import QrDisplay from './QrDisplay';
+import { ResultPage } from './ResultPage';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  return <div className='qr-code-container'>
+    <BrowserRouter>
+      <Switch>
+        <Route exact={true} path='/' component={QrScanner} />;
+        <Route exact={true} path='/qr' component={QrDisplay} />;
+        <Route exact={true} path='/resultPage' component={ResultPage} />;
+      </Switch >
+    </BrowserRouter>
+  </div>;
 }
 
 export default App;
